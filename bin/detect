@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-# bin/detect <build-dir>
 
-echo "php for owncloud" && exit 0
+echo "bp test" && exit 0
