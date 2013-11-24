@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+# fail fast
+set -e
+
+echo "-----> starting "
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+
+echo "Cache dir:". ${CACHE_DIR}
+echo "Build dir:". ${BUILD_DIR}
+
+cd ${CACHE_DIR}
+
+echo "-----> Download apache"
+curl -s -S -O -L -m 300 --connect-timeout 60 "https://s3.amazonaws.com/hochm-buildpack-owncloud/apache/apache-2-2-26-precompiled.tar.gz"
+
+tar xzf apache-2-2-26-precompiled.tar.gz -C ${CACHE_DIR}
+rm apache-2-2-26-precompiled.tar.gz
+
+cp ${CACHE_DIR}/apache-2-2-26 ${BUILD_DIR} -R

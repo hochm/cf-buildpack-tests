@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# bin/release <build-dir>
+
+# important directories: https://gist.github.com/fe7f04abbd9538b656c5
+BUILD_DIR=$1
+
+cat <<EOF
+---
+EOF
+
+config_vars:
+  PATH: /app/vendor/bin:/usr/local/bin:/usr/bin:/bin
+default_process_types:
+  web: /app/apache/apachectl start
+EOF
